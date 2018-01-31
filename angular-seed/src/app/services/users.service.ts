@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '../common/auth.service';
+import { APIService } from '../common/api.service';
+import { AppConfiguration } from '../common/config/app-configuration.service'
+import { Http } from '@angular/http';
+
 @Injectable()
 export class UsersService extends APIService {
   constructor(

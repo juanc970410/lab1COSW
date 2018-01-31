@@ -34,7 +34,8 @@ const ROUTES = [
     HomePageComponent,
     TaskListPageComponent,
     TaskEditPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SignInPageComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,14 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { AppConfiguration } from './common/config/app-configuration.service';
+import { HttpModule } from '@angular/http';
+import { INITIAL_CONFIG } from './common/config/initial-config';
+import { AuthService } from './common/auth.service';
+
+
 const ROUTES = [
+  { path: '', component: SignInPageComponent },
   { path: '', component: HomePageComponent },
   { path: 'tasks', component: TaskListPageComponent },
   { path: 'edit', component: TaskEditPageComponent },
@@ -32,9 +39,19 @@ const ROUTES = [
     BrowserModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(ROUTES),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [TodoService],
+  providers: [
+    {
+      provide: INITIAL_CONFIG,
+      useValue: {
+        apiURL: 'http://localhost:8080'
+      }
+    },
+    TodoService,
+    AppConfiguration
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

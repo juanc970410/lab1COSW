@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TodoService } from './services/todo.service';
+import { UsersService } from './services/users.service';
 
 import { AppComponent } from './app.component';
 
@@ -18,7 +19,7 @@ import { AppConfiguration } from './common/config/app-configuration.service';
 import { HttpModule } from '@angular/http';
 import { INITIAL_CONFIG } from './common/config/initial-config';
 import { AuthService } from './common/auth.service';
-
+import { AppDataService } from './common/app-data.service';
 
 const ROUTES = [
   { path: '', component: SignInPageComponent },
@@ -52,7 +53,10 @@ const ROUTES = [
       }
     },
     TodoService,
-    AppConfiguration
+    AppConfiguration,
+    AuthService,
+    AppDataService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

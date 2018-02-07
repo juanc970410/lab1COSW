@@ -5,19 +5,26 @@ import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
+
 @Component({
   selector: 'app-task-sign-in-page',
   templateUrl: './sign-in-page.component.html',
-  styleUrls: ['./task-edit-page.component.css']
+  styleUrls: ['./sign-in-page.component.css']
 })
 @Injectable()
 export class SignInPageComponent{
-    private usersService: UsersService;
-    private signInForm: FormGroup;
+    private signInForm = null;
     private loginError: string;
-    constructor(public router: Router) {
+
+    constructor(public router: Router, public formBuilder: FormBuilder, public usersService: UsersService) {
 
   }
+    ngOnInit(){
+        this.signInForm = this.formBuilder.group({
+            username: '',
+            password: ''
+        });
+    }
     
     doLogin() {
         this.usersService.login(
